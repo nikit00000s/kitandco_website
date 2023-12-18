@@ -1,0 +1,65 @@
+<mat-toolbar color="primary" class="toolbar mat-elevation-z8">
+
+    <!--                [class.menu-icon_active]="sidenav_opened"-->
+    <!--                [class.mat-elevation-z8]="sidenav_opened"-->
+    <button mat-button
+            class="menu-icon"
+            aria-label="menu icon"
+            (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <img class="toolbar__logo" src="assets/logo/logo_new.png" alt="Kit & Co">
+    <span>Kit & Co</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="main-container">
+    <mat-drawer-container autosize class="sidebar-container mat-elevation-z0">
+        <mat-drawer #drawer
+                    [(opened)]="sidenav_opened"
+                    class="sidebar"
+                    mode="side" opened>
+
+            <mat-list>
+                <div mat-subheader>Навигация</div>
+                <mat-list-item *ngFor="let link of navLinks"
+                               [routerLink]="link.link"
+                               routerLinkActive="sidebar__link_active"
+                               [matTooltip]="link.help || ''">
+                    <mat-icon mat-list-icon>{{ link.icon }}</mat-icon>
+                    <div mat-line>{{ link.view }}</div>
+<!--                    <div mat-line>{{ link.link }}</div>-->
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+        </mat-drawer>
+        <div class="content-container">
+            <div class="page-container container">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </mat-drawer-container>
+</div>
+<footer class="footer back-primary">
+    <div class="container"></div>
+</footer>
+<div class="back-primary">
+    <div class="container footer-wrap">
+        <footer class="row">
+            <div class="col-md-8 footer__column">
+                <div class="footer__logo-wrap">
+                    <img class="footer__logo" src="assets/logo/logo_new.png" alt="Kit & Co">
+
+                </div>
+                <span>{{ currentDate | date:'YYYY' }}</span>
+                <span><mat-icon inline>copyright</mat-icon></span>
+                <span>Kit & Co</span>
+            </div>
+            <div class="col-md-4"></div>
+        </footer>
+    </div>
+</div>
+

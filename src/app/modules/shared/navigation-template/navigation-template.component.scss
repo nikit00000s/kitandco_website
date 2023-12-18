@@ -1,0 +1,98 @@
+@use '@angular/material' as mat;
+@include mat.core();
+$primary_palette: mat.$indigo-palette;
+$primary_contrast: map-get($primary_palette, contrast);
+
+.toolbar {
+  padding-left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.toolbar__logo {
+  height: 70px;
+}
+
+.toolbar__logo-wrapper {
+  $size: 80px;
+  height: $size;
+  width: $size;
+  border-radius: 64px;
+  background: black;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menu-icon_active {
+  //background: white;
+  //color: $primary;
+}
+
+.menu-icon {
+  height: inherit;
+  border-radius: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+}
+
+.sidebar-container {
+  flex: 1 0 auto;
+  margin-top: 64px;
+  background-color: unset;
+}
+
+.sidebar {
+  width: 256px;
+}
+
+.content-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.sidebar-link {
+}
+.sidebar__link_active {
+  padding-left: 5px;
+  color: mat.get-color-from-palette($primary_palette, 500);
+}
+
+.page-container {
+  flex: 1 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-wrap {
+  height: 256px;
+}
+
+.footer__logo-wrap {
+  $size: 196px;
+  height: $size;
+  width: $size;
+  //background-color: white;
+  //border-radius: $size;
+}
+
+.footer__logo {
+  height: 184px;
+}
+
+.footer__column {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 20px;
+  gap: 10px;
+}

@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+/* Importing Bootstrap SCSS file. */
+@import '../node_modules/bootstrap/scss/bootstrap';
+@include mat.core();
+$primary_palette: mat.$indigo-palette;
+$primary_contrast: map-get($primary_palette, contrast);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.color-primary {
+  color: mat.get-color-from-palette($primary_palette);
+}
+
+.back-primary {
+  background: mat.get-color-from-palette($primary_palette, 500);
+  color: mat.get-color-from-palette($primary_contrast, 700);
+}
