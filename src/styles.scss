@@ -12,10 +12,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .color-primary {
-  color: mat.get-color-from-palette($primary_palette);
+  color: mat.get-color-from-palette($primary_palette, 700);
 }
 
 .back-primary {
   background: mat.get-color-from-palette($primary_palette, 500);
+  color: mat.get-color-from-palette($primary_contrast, 700);
+}
+
+.back-primary-lighter {
+  background: mat.get-color-from-palette($primary_palette, 400);
   color: mat.get-color-from-palette($primary_contrast, 700);
 }

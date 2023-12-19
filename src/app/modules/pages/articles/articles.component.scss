@@ -1,0 +1,43 @@
+.articles-page-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  gap: 40px;
+}
+
+.article-finder-form__field {
+  width: 500px;
+}
+
+.articles-found-container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  gap: 40px;
+}
+
+.article-found {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  padding: 20px;
+  border-radius: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.article-found__name {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.article-found__preview {
+  height: 60px;
+  border-radius: 10px;
+}

@@ -1,0 +1,23 @@
+<div class="selected-article-contents">
+    <button mat-stroked-button routerLink="/articles" class="return-button">
+        <mat-icon>arrow_back</mat-icon>
+        Вернуться к поиску
+    </button>
+
+    <mat-chip-list aria-label="Метки">
+        <mat-label>Метки:</mat-label>
+        <mat-chip color="primary" *ngFor="let tag of article.tags" (click)="navigateByTag(tag)">{{ tag }}</mat-chip>
+    </mat-chip-list>
+
+    <h1 class="article__title color-primary">{{ article.name }}</h1>
+
+    <section class="article__contents">
+        <ng-container *ngFor="let content of article.content" [ngSwitch]="content['type']">
+            <p *ngSwitchCase="'text'">{{content['text']}}</p>
+            <figure *ngSwitchCase="'img'">
+                <img [src]="'/assets/articles/' + content['src']" [alt]="content['alt'] || 'Изображение в статье'">
+                <figcaption *ngIf="content['caption']">{{content['caption']}}</figcaption>
+            </figure>
+        </ng-container>
+    </section>
+</div>

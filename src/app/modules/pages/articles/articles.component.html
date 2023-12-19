@@ -1,1 +1,35 @@
-<p>articles works!</p>
+<div class="articles-page-wrap">
+    <form class="article-finder-form">
+        <mat-form-field class="article-finder-form__field" appearance="fill">
+            <mat-label>
+                <mat-icon inline>search</mat-icon>
+                Название статьи
+            </mat-label>
+            <input type="text"
+                   aria-label="Number"
+                   matInput
+                   [formControl]="articleFinderControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+
+    <div class="articles-found-container">
+        <div *ngFor="let article of filteredArticles | async" class="article-found back-primary-lighter"
+             [routerLink]="'/articles/' + article.name">
+            <img *ngIf="article.preview" [src]="'/assets/article-previews/' + article.preview"
+                 alt="article preview" class="article-found__preview">
+            <span class="article-found__name">{{ article.name }}</span>
+        </div>
+    </div>
+
+    <mat-paginator [length]="(filteredArticles | async)?.length"
+                   [pageSizeOptions]="[5, 10]"
+                   (page)="handlePageEvent($event)"
+                   aria-label="Выбрать страницу">
+    </mat-paginator>
+</div>

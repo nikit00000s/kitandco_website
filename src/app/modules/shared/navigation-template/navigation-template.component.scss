@@ -3,6 +3,9 @@
 $primary_palette: mat.$indigo-palette;
 $primary_contrast: map-get($primary_palette, contrast);
 
+$footer-height: 200px;
+$toolbar-height: 64px;
+
 .toolbar {
   padding-left: 0;
   position: fixed;
@@ -41,26 +44,38 @@ $primary_contrast: map-get($primary_palette, contrast);
 .main-container {
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  //min-height: 100vh;
 }
 
 .sidebar-container {
   flex: 1 0 auto;
-  margin-top: 64px;
+  margin-top: $toolbar-height;
   background-color: unset;
 }
 
 .sidebar {
   width: 256px;
+  //position: fixed;
+  //top: $toolbar-height;
+}
+.sidebar-inner {
+  //position: fixed;
+  //top: $toolbar-height;
+  position: absolute;
+  top: 0px;
+  width: 100%;
 }
 
 .content-container {
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  min-height: 100%;
+  //height: calc(100% - 64px);
+  //overflow-y: scroll;
 }
 
-.sidebar-link {
+.sidebar__link {
+  cursor: pointer;
 }
 .sidebar__link_active {
   padding-left: 5px;
@@ -71,10 +86,17 @@ $primary_contrast: map-get($primary_palette, contrast);
   flex: 1 0 auto;
   padding-top: 40px;
   padding-bottom: 40px;
+  min-height: calc(100vh - $toolbar-height - $footer-height);
+
+  display: flex;
+
+  & > * {
+    flex: 1 0 auto;
+  }
 }
 
 .footer-wrap {
-  height: 256px;
+  height: $footer-height;
 }
 
 .footer__logo-wrap {
@@ -95,4 +117,9 @@ $primary_contrast: map-get($primary_palette, contrast);
   align-items: center;
   font-size: 20px;
   gap: 10px;
+}
+
+.mat-drawer-content {
+  height: unset;
+  overflow: unset;
 }

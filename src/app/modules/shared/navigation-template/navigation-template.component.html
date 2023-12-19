@@ -21,10 +21,11 @@
                     [(opened)]="sidenav_opened"
                     class="sidebar"
                     mode="side" opened>
-
+            <div class="sidebar-inner">
             <mat-list>
                 <div mat-subheader>Навигация</div>
                 <mat-list-item *ngFor="let link of navLinks"
+                               class="sidebar__link"
                                [routerLink]="link.link"
                                routerLinkActive="sidebar__link_active"
                                [matTooltip]="link.help || ''">
@@ -34,8 +35,9 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </mat-list>
-
+            </div>
         </mat-drawer>
+
         <div class="content-container">
             <div class="page-container container">
                 <ng-content></ng-content>
